@@ -1,0 +1,27 @@
+<!-- templates/posts/group_list.html -->
+{% extends 'base.html' %}
+{% block content %}
+  <div class="container">
+    <p>
+      {{ group.title }}
+    </p>
+{% for post in posts %}
+  <article>
+    <ul>
+      <li>
+        Автор: {{ post.author.get_full_name }}
+      </li>
+      <li>
+        Дата публикации: {{ post.pub_date|date:"d E Y" }}
+      </li>
+    </ul>
+    <p>
+      {{ post.text }}
+    </p>
+    <hr>
+  </article>
+  {% empty %}
+  <p>Нет постов</p>
+{% endfor %}
+
+{% endblock  %}
